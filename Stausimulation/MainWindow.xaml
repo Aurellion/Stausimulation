@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="600">
     <Canvas x:Name="Zeichenflaeche">
+        <Label x:Name="Lbl_maxV" Content="Label" Canvas.Left="66" Canvas.Top="29"/>
+        <Label x:Name="Lbl_meanV" Content="Label" Canvas.Left="171" Canvas.Top="29"/>
+        <Label x:Name="Lbl_minV" Content="Label" Canvas.Left="279" Canvas.Top="29"/>
 
     </Canvas>
 </Window>

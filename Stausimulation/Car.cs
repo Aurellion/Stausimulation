@@ -38,7 +38,7 @@ namespace Stausimulation
             zeichenflaeche.Children.Add(e);
         }
 
-        internal void Move(TimeSpan interval)
+        public void Move(TimeSpan interval)
         {
             position += speed * interval.TotalMinutes;
         }

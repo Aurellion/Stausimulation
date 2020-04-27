@@ -22,6 +22,7 @@ namespace Stausimulation
     {
         System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
         Car[] autos = new Car[20];
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -36,9 +37,12 @@ namespace Stausimulation
             }
         }
 
+        double[] averages = new double[1000];
+        int frameNumber = 0;
         void animate(object sender, EventArgs e)
         {
-            Zeichenflaeche.Children.Clear();
+            //Zeichenflaeche.Children.Clear();//alees loeschen
+            Zeichenflaeche.Children.RemoveRange(3, autos.Length);
             //Autos durchgehen und zeichnen
             foreach (Car auto in autos)
             {
@@ -64,8 +68,29 @@ namespace Stausimulation
                     auto.speed = naehstesAuto.speed;
                 }
 
-
                 auto.Move(timer.Interval);
+
+                //3 Berechnungen
+                double speedmin=double.MaxValue, speedmean=0, speedsum=0, speedmax=0;
+                foreach (Car item in autos)
+                {
+                    double s = item.speed;
+                    speedmin = Math.Min(s, speedmin);
+                    speedmax = Math.Max(s, speedmax);
+                    speedsum += s;
+                }
+                Lbl_maxV.Content = Math.Round(speedmax,4);
+                Lbl_minV.Content = Math.Round(speedmin, 4);
+                speedmean = speedsum / autos.Length;
+                Lbl_meanV.Content = Math.Round(speedmean, 4);
+
+                //Graph zeichnen
+                averages[frameNumber] = speedmean;
+                frameNumber++;
+
+                //Werte aus dem array holen
+                //double min = autos.Min(x => x.speed);
+                //double max = autos.Max(x => x.speed);
             }
 
             foreach (Car auto in autos)
