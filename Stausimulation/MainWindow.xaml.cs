@@ -26,7 +26,7 @@ namespace Stausimulation
         public MainWindow()
         {
             InitializeComponent();
-            timer.Interval = TimeSpan.FromMilliseconds(10);
+            timer.Interval = TimeSpan.FromMilliseconds(17);
             timer.Start();
             timer.Tick += animate;
 
@@ -82,11 +82,7 @@ namespace Stausimulation
                 Lbl_maxV.Content = Math.Round(speedmax,4);
                 Lbl_minV.Content = Math.Round(speedmin, 4);
                 speedmean = speedsum / autos.Length;
-                Lbl_meanV.Content = Math.Round(speedmean, 4);
-
-                //Graph zeichnen
-                averages[frameNumber] = speedmean;
-                frameNumber++;
+                Lbl_meanV.Content = Math.Round(speedmean, 4);                
 
                 //Werte aus dem array holen
                 //double min = autos.Min(x => x.speed);
