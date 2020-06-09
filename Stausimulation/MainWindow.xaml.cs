@@ -38,7 +38,7 @@ namespace Stausimulation
         }
 
         double[] averages = new double[1000];
-        int frameNumber = 0;
+        
         void animate(object sender, EventArgs e)
         {
             //Zeichenflaeche.Children.Clear();//alees loeschen
